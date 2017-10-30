@@ -10,6 +10,7 @@
   #if ($meta.stylesheetPath)
   <link href="custom.css" rel="stylesheet" type="text/css" />
   #end
+  <script src='http://www.ichartjs.com/ichart.latest.min.js'></script>
 </head>
 <body>
 <div id="meta">
@@ -27,6 +28,8 @@
     #end
   </p>
 #end
+
+<div id='ichart-render'></div>
 
 #foreach ($suite in $suites)
 <table class="overviewTable">
@@ -108,21 +111,21 @@
     <td colspan="2" class="totalLabel">$messages.getString("total")</td>
 
     #if ($totalPassed > 0)
-    <td class="passed number">$totalPassed</td>
+    <td id="tpn" class="passed number">$totalPassed</td>
     #else
-    <td class="zero number">0</td>
+    <td id="tpn" class="zero number">0</td>
     #end
 
     #if ($totalSkipped > 0)
-    <td class="skipped number">$totalSkipped</td>
+    <td id="tsn" class="skipped number">$totalSkipped</td>
     #else
-    <td class="zero number">0</td>
+    <td id="tsn" class="zero number">0</td>
     #end
 
     #if ($totalFailed > 0)
-    <td class="failed number">$totalFailed</td>
+    <td id="tfn" class="failed number">$totalFailed</td>
     #else
-    <td class="zero number">0</td>
+    <td id="tfn" class="zero number">0</td>
     #end
 
     <td class="passRate suite">
@@ -137,5 +140,123 @@
   </tr>
 </table>
 #end
+<script type='text/javascript'>
+pcount=document.getElementById("tpn").innerHTML;
+fcount=document.getElementById("tfn").innerHTML;
+scount=document.getElementById("tsn").innerHTML;
+$(function(){
+     var chart = iChart.create({
+           render:"ichart-render",
+           width:800,
+           height:400,
+           background_color:"#fefefe",
+           gradient:false,
+           color_factor:0.2,
+           border:{
+                 color:"BCBCBC",
+                 width:0
+           },
+           align:"center",
+           offsetx:0,
+           offsety:0,
+           sub_option:{
+                 border:{
+                       color:"#BCBCBC",
+                       width:1
+                 },
+                 label:{
+                       fontweight:500,
+                       fontsize:11,
+                       color:"#4572a7",
+                       sign:"square",
+                       sign_size:12,
+                       border:{
+                             color:"#BCBCBC",
+                             width:1
+                       }
+                 }
+           },
+           shadow:true,
+           shadow_color:"#666666",
+           shadow_blur:2,
+           showpercent:false,
+           column_width:"70%",
+           bar_height:"70%",
+           radius:"90%",
+           subtitle:{
+                 text:"",
+                 color:"#111111",
+                 fontsize:16,
+                 font:"微软雅黑",
+                 textAlign:"center",
+                 height:20,
+                 offsetx:0,
+                 offsety:0
+           },
+           footnote:{
+                 text:"",
+                 color:"#111111",
+                 fontsize:12,
+                 font:"微软雅黑",
+                 textAlign:"right",
+                 height:20,
+                 offsetx:0,
+                 offsety:0
+           },
+           legend:{
+                 enable:false,
+                 background_color:"#fefefe",
+                 color:"#333333",
+                 fontsize:12,
+                 border:{
+                       color:"#BCBCBC",
+                       width:1
+                 },
+                 column:1,
+                 align:"right",
+                 valign:"center",
+                 offsetx:0,
+                 offsety:0
+           },
+           coordinate:{
+                 width:"80%",
+                 height:"84%",
+                 background_color:"#ffffff",
+                 axis:{
+                       color:"#a5acb8",
+                       width:[1,"",1,""]
+                 },
+                 grid_color:"#d9d9d9",
+                 label:{
+                       fontweight:500,
+                       color:"#666666",
+                       fontsize:11
+                 }
+           },
+           label:{
+                 fontweight:500,
+                 color:"#666666",
+                 fontsize:11
+           },
+           type:"pie2d",
+           data:[
+                 {
+                 name:"Passed",
+                 value:pcount,
+                 color:"#44aa44"
+           },{
+                 name:"Failed",
+                 value:fcount,
+                 color:"#ff4444"
+           },{
+                 name:"Skipped",
+                 value:scount,
+                 color:"#FFD700"
+           }
+           ]
+     });
+     chart.draw();
+});
+</script>
 </body>
 </html>

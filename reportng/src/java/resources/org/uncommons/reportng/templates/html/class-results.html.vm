@@ -11,7 +11,7 @@
       #set ($testInstanceName = " ($testResult.testName)")
     #end
     #if ($testResult.method.description && $testResult.method.description.length() > 0)
-      <span class="description" title="$testResult.method.description">$testResult.name$testInstanceName</span>
+      <span class="description">$testResult.name$testInstanceName ($testResult.method.description)</span>
     #else
       $testResult.name$testInstanceName
     #end
@@ -47,9 +47,9 @@
     <div class="testOutput">
       #foreach( $line in $output )
         #if ($meta.shouldEscapeOutput())
-          $utils.escapeHTMLString($line)<br />
+          $utils.escapeHTMLString($utils.removeImage($line))<br />
         #else
-          $line
+          $utils.removeImage($line)<br />
         #end
       #end
     </div>
@@ -75,6 +75,20 @@
     </div>
     #end
     #set ($id = $id + 1)
+  </td>
+  <td class="screenshot">
+      #set ($output = $utils.getTestOutput($testResult))
+      #if ($output.size() > 0)
+          <div class="screenshotimage">
+              #foreach( $line in $output )
+                  #if ($meta.shouldEscapeOutput())
+                      $utils.escapeHTMLString($utils.getImageString($line))<br />
+                  #else
+                      $utils.getImageString($line)<br />
+                  #end
+              #end
+          </div>
+      #end
   </td>
 </tr>
 #end
