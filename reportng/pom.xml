@@ -7,7 +7,7 @@
   <name>ReportNG</name>
   <groupId>org.uncommons</groupId>
   <artifactId>reportng</artifactId>
-  <version>@VERSION@</version>
+  <version>1.1.6</version>
   <packaging>jar</packaging>
   <url>https://reportng.dev.java.net/</url>
 
