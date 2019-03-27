@@ -6,7 +6,7 @@ Reporter.log("<img src='img/img.png' width='100'/>");
 若要使用点击放大功能，则img标签需要加一个class，例：
 Reporter.log("<img class='pimg src='img/img.png' width='100'/>");
 
-
+##### 以下是原版说明
 THIS SOFTWARE IS NO LONGER BEING MAINTAINED. VERSION 1.1.4 IS THE FINAL RELEASE.
 IF YOU WOULD LIKE TO MAKE YOUR OWN UPDATES, YOU CAN FORK IT. PULL REQUESTS TO
 THIS REPOSITORY WILL BE IGNORED.
