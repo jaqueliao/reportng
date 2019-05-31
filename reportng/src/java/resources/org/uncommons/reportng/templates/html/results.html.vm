@@ -64,22 +64,6 @@
   </table>
 #end
 
-#if ($skippedTests.size() > 0)
-  <table class="resultsTable" width="100%">
-    <tr><th colspan="5" class="header skipped">$messages.getString("skippedTests")</th></tr>
-    #foreach ($testClass in $skippedTests.keySet())
-      <tr>
-         <td colspan="1" class="group">$testClass.name</td>
-          <td colspan="1" class="group">$messages.getString("duration")</td>
-          <td colspan="1" class="group">$messages.getString("log")</td>
-          <td colspan="1" class="group">$messages.getString("screenshot")</td>
-      </tr>
-      #set ($classResults = $skippedTests.get($testClass))
-      #parse ("org/uncommons/reportng/templates/html/class-results.html.vm")
-    #end
-  </table>
-#end
-
 #if ($passedTests.size() > 0)
   <table class="resultsTable">
     <tr><th colspan="5" class="header passed">$messages.getString("passedTests")</th></tr>
@@ -91,6 +75,22 @@
           <td colspan="1" class="group">$messages.getString("screenshot")</td>
       </tr>
       #set ($classResults = $passedTests.get($testClass))
+      #parse ("org/uncommons/reportng/templates/html/class-results.html.vm")
+    #end
+  </table>
+#end
+
+#if ($skippedTests.size() > 0)
+  <table class="resultsTable" width="100%">
+    <tr><th colspan="5" class="header skipped">$messages.getString("skippedTests")</th></tr>
+    #foreach ($testClass in $skippedTests.keySet())
+      <tr>
+        <td colspan="1" class="group">$testClass.name</td>
+        <td colspan="1" class="group">$messages.getString("duration")</td>
+        <td colspan="1" class="group">$messages.getString("log")</td>
+        <td colspan="1" class="group">$messages.getString("screenshot")</td>
+      </tr>
+      #set ($classResults = $skippedTests.get($testClass))
       #parse ("org/uncommons/reportng/templates/html/class-results.html.vm")
     #end
   </table>
