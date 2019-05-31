@@ -22,7 +22,7 @@
       #if ($meta.shouldEscapeOutput())
         $utils.escapeHTMLString($line)<br />
       #else
-        $line
+        $line<br />
       #end
     #end
   </div>

@@ -10,7 +10,7 @@
   #if ($meta.stylesheetPath)
   <link href="custom.css" rel="stylesheet" type="text/css" />
   #end
-  <script src='http://www.ichartjs.com/ichart.latest.min.js'></script>
+  <script src='https://jaque-1255829421.cos.ap-guangzhou.myqcloud.com/ichart.latest.min.js'></script>
 </head>
 <body>
 <div id="meta">

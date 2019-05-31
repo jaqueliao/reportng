@@ -18,12 +18,23 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+  <build>
+    <sourceDirectory>src/java/main</sourceDirectory>
+    <testSourceDirectory>src/java/test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/java/resources</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+  </build>
   <dependencies>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>[5.0,)</version>
+      <version>6.14.2</version>
     </dependency>
     <dependency>
       <groupId>velocity</groupId>
@@ -31,5 +42,5 @@
       <version>1.4</version>
     </dependency>
   </dependencies>
-  
+
 </project>

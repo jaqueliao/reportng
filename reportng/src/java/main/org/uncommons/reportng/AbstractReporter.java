@@ -15,22 +15,12 @@
 //=============================================================================
 package org.uncommons.reportng;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.ResourceBundle;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.testng.IReporter;
+
+import java.io.*;
+import java.util.ResourceBundle;
 
 /**
  * Convenient base class for the ReportNG reporters.  Provides common functionality.
@@ -103,7 +93,7 @@ public abstract class AbstractReporter implements IReporter
                                 VelocityContext context) throws Exception
     {
         //Writer writer = new BufferedWriter(new FileWriter(file));
-    	//encoding to utf-8£¬ÐÞ¸´ÖÐÎÄÂÒÂë
+    	//encoding to utf-8ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         OutputStream out = new FileOutputStream(file);
         Writer writer = new BufferedWriter(new OutputStreamWriter(out,"utf-8"));
         try
